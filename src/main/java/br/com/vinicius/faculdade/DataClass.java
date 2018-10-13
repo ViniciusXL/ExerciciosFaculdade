@@ -1,8 +1,17 @@
 package br.com.vinicius.faculdade;
 
 import java.util.Calendar;
+import java.util.Scanner;
 
 public class DataClass {
+	
+	/*
+	 * Primeiro exercício de P.O.O. do professor Jonathas Silva dos Santos
+	 * na faculdade CENTRO UNIVERSITÁRIO DO NORTE-  UNINORTE
+	 * 
+	 * Criado por Marcus Vinícius
+	 * 12 de outubro de 2018
+	 */
 
 	protected int day;
 	protected int month;
@@ -30,6 +39,38 @@ public class DataClass {
 		if (this.month == -1) {
 			this.sendError();
 			return;
+		}
+	}
+
+	public static void main(String[] args) {
+		Scanner scanner = null;
+
+		try {
+			scanner = new Scanner(System.in);
+
+			System.out.println("Por favor, informe o dia da data");
+			int day = scanner.nextInt();
+
+			System.out.println("Agora, por favor, informe o mês da data");
+			int month = scanner.nextInt();
+
+			System.out.println("Novamente, por favor, informe o ano da data");
+			int year = scanner.nextInt();
+
+			DataClass data = new DataClass(day, month, year);
+			if (data.error)
+				return;
+
+			System.out.println("Data atual: " + data.toString());
+
+			data.advanceOneDayAndCheckValues();
+			System.out.println("Próxima data: " + data.toString());
+
+			data.insertValuesTheOS();
+			System.out.println("Data do sistema: " + data.toString());
+		} finally {
+			if (scanner != null)
+				scanner.close();
 		}
 	}
 
