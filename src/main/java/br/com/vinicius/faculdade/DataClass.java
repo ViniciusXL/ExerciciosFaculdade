@@ -41,6 +41,18 @@ public class DataClass {
 			return;
 		}
 	}
+	
+	public DataClass() {
+		Calendar calendar = Calendar.getInstance();
+
+		this.day = calendar.get(Calendar.DAY_OF_MONTH);
+		this.month = calendar.get(Calendar.MONTH);
+		this.month += 1;
+		if (this.month > 12)
+			this.month = 1;
+
+		this.year = calendar.get(Calendar.YEAR);
+	}
 
 	public static void main(String[] args) {
 		Scanner scanner = null;
@@ -66,24 +78,12 @@ public class DataClass {
 			data.advanceOneDayAndCheckValues();
 			System.out.println("Próxima data: " + data.toString());
 
-			data.insertValuesTheOS();
+			data = new DataClass();
 			System.out.println("Data do sistema: " + data.toString());
 		} finally {
 			if (scanner != null)
 				scanner.close();
 		}
-	}
-
-	public final void insertValuesTheOS() {
-		Calendar calendar = Calendar.getInstance();
-
-		this.day = calendar.get(Calendar.DAY_OF_MONTH);
-		this.month = calendar.get(Calendar.MONTH);
-		this.month += 1;
-		if (this.month > 12)
-			this.month = 1;
-
-		this.year = calendar.get(Calendar.YEAR);
 	}
 
 	public final void advanceOneDayAndCheckValues() {

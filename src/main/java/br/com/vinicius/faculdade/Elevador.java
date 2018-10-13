@@ -1,6 +1,6 @@
 package br.com.vinicius.faculdade;
 
-public class ElevadorClass {
+public class Elevador {
 	
 	/*
 	 * Segundo exercício de P.O.O. do professor Jonathas Silva dos Santos
@@ -10,17 +10,22 @@ public class ElevadorClass {
 	 * 13 de outubro de 2018
 	 */
 
+	// Valores pré-definidos da classe //
+	
 	protected int andar_Atual = 0;
+	protected int pessoas_Presentes = 0;
+	
+	// Valores que serão implementados quando a classe for chamada //
 
 	protected int andares;
 	protected int capacidade;
-	protected int pessoas_Presentes;
 
-	public ElevadorClass(int andares, int capacidade, int pessoas_Presentes) {
+	public Elevador(int andares, int capacidade) {
 		this.andares = andares;
 		this.capacidade = capacidade;
-		this.pessoas_Presentes = pessoas_Presentes;
 	}
+	
+	// Métodos de get e set //
 
 	public final int getAndarAtual() {
 		return this.andar_Atual;
@@ -53,6 +58,8 @@ public class ElevadorClass {
 	public final void setPessoasPresentes(int pessoas_Presentes) {
 		this.pessoas_Presentes = pessoas_Presentes;
 	}
+	
+	// Método de entrar no elevador, verificando se há espaço no mesmo //
 
 	public final void entrar() {
 		if (this.pessoas_Presentes + 1 > this.capacidade) {
@@ -63,6 +70,8 @@ public class ElevadorClass {
 		this.setPessoasPresentes(this.getPessoasPresentes() + 1);
 	}
 	
+	// Método de sair do elevador, verificando se há mais de 0 pessoas nele //
+	
 	public final void sair() {
 		if (this.pessoas_Presentes - 1 < 0) {
 			System.out.println("Não há pessoas para sair do elevador!");
@@ -72,6 +81,8 @@ public class ElevadorClass {
 		this.setPessoasPresentes(this.getPessoasPresentes() - 1);
 	}
 	
+	// Método de subir o andar do elevador, verificando se há andar superior //
+	
 	public final void sobe() {
 		if (this.andar_Atual + 1 > this.andares) {
 			System.out.println("Não há mais andares para subir!");
@@ -80,6 +91,8 @@ public class ElevadorClass {
 		
 		this.setAndarAtual(this.getAndarAtual() + 1);
 	}
+	
+	// Método de descer o elevador, verificando se há andares abaixo //
 	
 	public final void desce() {
 		if (this.andar_Atual - 1 < 0) {
