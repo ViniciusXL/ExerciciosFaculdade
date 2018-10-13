@@ -47,9 +47,8 @@ public class DataClass {
 
 	public final void advanceOneDayAndCheckValues() {
 		this.day = this.day += 1;
-		if ((this.month == 2 && this.day > 28 && this.year % 4 != 0)
-				| (this.month == 2 && this.day > 29 && this.year % 4 == 0)
-				| (this.validMonthWith30Days(this.day, this.month))) {
+		if (this.validFebruary(this.day, this.month, this.year) | this.validDay(this.day)
+				| this.validMonth(this.day, this.month)) {
 			this.day = 1;
 			this.month += 1;
 		}
@@ -93,13 +92,20 @@ public class DataClass {
 		this.year = year;
 	}
 
-	public final boolean validMonthWith30Days(int day, int month) {
+	public final boolean validMonth(int day, int month) {
 		return month == 4 | month == 6 | month == 9 | month == 11 && day > 30 ? true : false;
 	}
 
+	public final boolean validDay(int day) {
+		return day < -1 | day > 31 ? true : false;
+	}
+
+	public final boolean validFebruary(int day, int month, int year) {
+		return (month == 2 && day > 28 && year % 4 != 0) | (month == 2 && day > 29 && year % 4 == 0) ? true : false;
+	}
+
 	public final int validDay(int day, int month, int year) {
-		return (month == 2 && day > 28 && year % 4 != 0) | (month == 2 && day > 29 && year % 4 == 0)
-				| this.validMonthWith30Days(day, month) ? -1 : day;
+		return this.validFebruary(day, month, year) | this.validDay(day) | this.validMonth(day, month) ? -1 : day;
 	}
 
 	public final int validMonth(int month) {
