@@ -97,7 +97,7 @@ public class DataClass {
 	}
 
 	public final boolean validDay(int day) {
-		return day < -1 | day > 31 ? true : false;
+		return day <= 0 | day > 31 ? true : false;
 	}
 
 	public final boolean validFebruary(int day, int month, int year) {
