@@ -60,7 +60,7 @@ public class ElevadorClass {
 			return;
 		}
 
-		this.pessoas_Presentes += 1;
+		this.setPessoasPresentes(this.getPessoasPresentes() + 1);
 	}
 	
 	public final void sair() {
@@ -69,7 +69,7 @@ public class ElevadorClass {
 			return;
 		}
 		
-		this.pessoas_Presentes -= 1;
+		this.setPessoasPresentes(this.getPessoasPresentes() - 1);
 	}
 	
 	public final void sobe() {
@@ -78,15 +78,15 @@ public class ElevadorClass {
 			return;
 		}
 		
-		this.andar_Atual += 1;
+		this.setAndarAtual(this.getAndarAtual() + 1);
 	}
 	
 	public final void desce() {
-		if (this.andar_Atual - 1 <= 0) {
+		if (this.andar_Atual - 1 < 0) {
 			System.out.println("Você já está no térreo!");
 			return;
 		}
 		
-		this.andar_Atual -= 1;
+		this.setAndarAtual(this.getAndarAtual() - 1);
 	}
 }
