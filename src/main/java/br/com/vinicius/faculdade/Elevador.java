@@ -9,13 +9,9 @@ public class Elevador {
 	 * Criado por Marcus Vinícius
 	 * 13 de outubro de 2018
 	 */
-
-	// Valores pré-definidos da classe //
 	
 	protected int andar_Atual = 0;
 	protected int pessoas_Presentes = 0;
-	
-	// Valores que serão implementados quando a classe for chamada //
 
 	protected int andares;
 	protected int capacidade;
